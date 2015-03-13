@@ -1,18 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.ComponentModel.Composition;
+using System.Runtime.InteropServices;
+using Microsoft.VisualStudio;
 using Microsoft.VisualStudio.Language.Intellisense;
-using Microsoft.VisualStudio.Text;
-using Microsoft.VisualStudio.Text.Operations;
-using Microsoft.VisualStudio.Utilities;
 using Microsoft.VisualStudio.OLE.Interop;
+using Microsoft.VisualStudio.Shell;
+using Microsoft.VisualStudio.Text;
 using Microsoft.VisualStudio.Text.Editor;
 using Microsoft.VisualStudio.TextManager.Interop;
-using Microsoft.VisualStudio.Shell;
-using Microsoft.VisualStudio;
-using System.Runtime.InteropServices;
 
 namespace VisualStudio.Go
 {
@@ -31,6 +25,8 @@ namespace VisualStudio.Go
 			//add the command to the command chain
 			textViewAdapter.AddCommandFilter(this, out m_nextCommandHandler);
 		}
+
+		#region IOleCommandTarget Members
 
 		public int QueryStatus(ref Guid pguidCmdGroup, uint cCmds, OLECMD[] prgCmds, IntPtr pCmdText)
 		{
@@ -80,12 +76,21 @@ namespace VisualStudio.Go
 			bool handled = false;
 			if (!typedChar.Equals(char.MinValue) && char.IsLetterOrDigit(typedChar))
 			{
-				if (m_session == null || m_session.IsDismissed) // If there is no active session, bring up completion
+				if(m_session == null || m_session.IsDismissed) // If there is no active session, bring up completion
 				{
-					this.TriggerCompletion();
-					m_session.Filter();
+					if(TriggerCompletion())
+					{
+						if(m_session != null && m_session.IsStarted)
+						{
+							m_session.Filter();
+						}
+						else
+						{
+							throw new Exception("Session not started correctly.");
+						}
+					}
 				}
-				else     //the completion session is already active, so just filter
+				else //the completion session is already active, so just filter
 				{
 					m_session.Filter();
 				}
@@ -102,22 +107,24 @@ namespace VisualStudio.Go
 			return retVal;
 		}
 
+		#endregion
+
 		private bool TriggerCompletion()
 		{
 			//the caret must be in a non-projection location 
 			SnapshotPoint? caretPoint =
 			m_textView.Caret.Position.Point.GetPoint(
-			textBuffer => (!textBuffer.ContentType.IsOfType("projection")), PositionAffinity.Predecessor);
+				textBuffer => (!textBuffer.ContentType.IsOfType("projection")), PositionAffinity.Predecessor);
 			if (!caretPoint.HasValue)
 			{
 				return false;
 			}
 
-			m_session = m_provider.CompletionBroker.CreateCompletionSession
-		 (m_textView,
-				caretPoint.Value.Snapshot.CreateTrackingPoint(caretPoint.Value.Position, PointTrackingMode.Positive),
-				true);
+			ITrackingPoint trackingPoint = caretPoint.Value.Snapshot.CreateTrackingPoint(caretPoint.Value.Position,
+				PointTrackingMode.Positive);
 
+			m_session = m_provider.CompletionBroker.CreateCompletionSession(m_textView, trackingPoint, true);
+			
 			//subscribe to the Dismissed event on the session 
 			m_session.Dismissed += this.OnSessionDismissed;
 			m_session.Start();

@@ -15,7 +15,7 @@ namespace VisualStudio.Go
 {
 	[Export(typeof(IVsTextViewCreationListener))]
 	[Name("token completion handler")]
-	[ContentType("plaintext")]
+	[ContentType("go")]
 	[TextViewRole(PredefinedTextViewRoles.Editable)]
 	internal class TestCompletionHandlerProvider : IVsTextViewCreationListener
 	{
@@ -32,7 +32,8 @@ namespace VisualStudio.Go
 			if (textView == null)
 				return;
 
-			Func<TestCompletionCommandHandler> createCommandHandler = delegate() { return new TestCompletionCommandHandler(textViewAdapter, textView, this); };
+			Func<TestCompletionCommandHandler> createCommandHandler =
+				() => new TestCompletionCommandHandler(textViewAdapter, textView, this);
 			textView.Properties.GetOrCreateSingletonProperty(createCommandHandler);
 		}
 	}
