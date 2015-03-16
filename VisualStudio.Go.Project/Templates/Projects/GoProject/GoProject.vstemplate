@@ -11,7 +11,7 @@
   <TemplateContent>
     <Project File="Go.goproj" ReplaceParameters="true">
       <ProjectItem ReplaceParameters="true" OpenInEditor="true">
-        sample.go
+        main.go
       </ProjectItem>
     </Project>
   </TemplateContent>

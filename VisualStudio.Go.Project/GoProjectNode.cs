@@ -30,6 +30,7 @@ namespace AaronApp.VisualStudio_Go_Project
 						"AaronApp.VisualStudio_Go_Project.Resources.GoProjectNode.bmp"));
 		}
 
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
 		public GoProjectNode(GoProjectPackage package)
         {
 			this.package = package;
@@ -40,6 +41,8 @@ namespace AaronApp.VisualStudio_Go_Project
 			{
 				this.ImageHandler.AddImage(img);
 			}
+
+			this.SupportsProjectDesigner = true;
         }
         public override Guid ProjectGuid
         {
@@ -62,5 +65,19 @@ namespace AaronApp.VisualStudio_Go_Project
 			this.FileTemplateProcessor.UntokenFile(source, target);
 			this.FileTemplateProcessor.Reset();
         }
+
+		protected override Guid[] GetConfigurationIndependentPropertyPages()
+		{
+			Guid[] result = new Guid[1];
+			result[0] = typeof(GeneralPropertyPage).GUID;
+			return result;
+		}
+
+		protected override Guid[] GetPriorityProjectDesignerPages()
+		{
+			Guid[] result = new Guid[1];
+			result[0] = typeof(GeneralPropertyPage).GUID;
+			return result;
+		}
 	}
 }

@@ -32,6 +32,7 @@ namespace AaronApp.VisualStudio_Go_Project
 		"Go Project Files (*.goproj);*.goproj", "goproj", "goproj",
 		".\\NullPath", LanguageVsTemplate = "GoProject")]
     [Guid(GuidList.guidVisualStudio_Go_ProjectPkgString)]
+	[ProvideObject(typeof(GeneralPropertyPage))]
 	public sealed class GoProjectPackage : ProjectPackage
     {
         /// <summary>

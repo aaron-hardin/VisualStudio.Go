@@ -122,9 +122,13 @@
     </COMReference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="GeneralPropertyPage.cs" />
     <Compile Include="GoProjectFactory.cs" />
     <Compile Include="GoProjectNode.cs" />
     <Compile Include="Guids.cs" />
+    <Compile Include="IGoPropertyPage.cs" />
+    <Compile Include="ProjectProperties.cs" />
+    <Compile Include="PropertyPageBase.cs" />
     <Compile Include="Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
