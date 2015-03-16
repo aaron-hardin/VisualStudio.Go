@@ -4,7 +4,7 @@ using Microsoft.VisualStudio.Text;
 using Microsoft.VisualStudio.Text.Operations;
 using Microsoft.VisualStudio.Utilities;
 
-namespace VisualStudio.Go
+namespace VisualStudio.Go.Intellisense
 {
 	[Export(typeof(ICompletionSourceProvider))]
 	[ContentType("go")]

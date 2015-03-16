@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{99999999-9999-9999-9999-999999999999}</ProjectGuid>
+    <OutputType>Zip</OutputType>
+    <ApplicationName>$projectname$</ApplicationName>
+    <AssemblyName>$safeprojectname$</AssemblyName>
+    <RootNamespace>$safeprojectname$</RootNamespace>
+    <DefaultEnvironments>ShellUI</DefaultEnvironments>
+    <Publisher />
+    <ApplicationVersion>1.0.0.0</ApplicationVersion>
+    <MFilesVersion>9.0.0.0</MFilesVersion>
+    <Description>An M-Files application.</Description>
+    <EnabledByDefault>true</EnabledByDefault>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <OutputPath>bin\Debug\</OutputPath>
+    <TestVault>Sample Vault</TestVault>
+    <LaunchMode>MFiles</LaunchMode>
+    <LaunchMFilesPath></LaunchMFilesPath>
+    <LaunchPSScript>$app = new-object -Com MFilesAPI.MFilesClientApplication
+# $vault contains MFilesAPI.Vault object for the vault.</LaunchPSScript>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <OutputPath>bin\Release</OutputPath>
+    <TestVault>Sample Vault</TestVault>
+    <LaunchMode>MFiles</LaunchMode>
+    <LaunchMFilesPath></LaunchMFilesPath>
+    <LaunchPSScript>$app = new-object -Com MFilesAPI.MFilesClientApplication
+# $vault contains MFilesAPI.Vault object for the vault.</LaunchPSScript>
+  </PropertyGroup>
+  <ItemGroup>
+  </ItemGroup>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -4,7 +4,7 @@ using Microsoft.VisualStudio.Language.Intellisense;
 using Microsoft.VisualStudio.Text;
 using Microsoft.VisualStudio.Text.Operations;
 
-namespace VisualStudio.Go
+namespace VisualStudio.Go.Intellisense
 {
 	internal class TestCompletionSource : ICompletionSource
 	{

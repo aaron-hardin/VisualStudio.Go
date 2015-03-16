@@ -8,7 +8,7 @@ using Microsoft.VisualStudio.Text;
 using Microsoft.VisualStudio.Text.Editor;
 using Microsoft.VisualStudio.TextManager.Interop;
 
-namespace VisualStudio.Go
+namespace VisualStudio.Go.Intellisense
 {
 	internal class TestCompletionCommandHandler : IOleCommandTarget
 	{

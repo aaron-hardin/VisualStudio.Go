@@ -1,14 +1,14 @@
 ﻿using System.ComponentModel.Composition;
 using Microsoft.VisualStudio.Utilities;
 
-namespace VisualStudio.Go
+namespace VisualStudio.Go.Intellisense
 {
 	internal static class ContentTypes
     {
         [Export]
         [Name("go")]
         [DisplayName("go")]
-        [BaseDefinition("text")]
+        [BaseDefinition("code")]
         internal static ContentTypeDefinition GoContentTypeDefinition;
 
         [Export]
