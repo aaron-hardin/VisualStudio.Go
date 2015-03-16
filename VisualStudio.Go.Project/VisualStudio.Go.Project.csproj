@@ -123,6 +123,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="GeneralPropertyPage.cs" />
+    <Compile Include="GoConfig.cs" />
+    <Compile Include="GoConfigProvider.cs" />
     <Compile Include="GoProjectFactory.cs" />
     <Compile Include="GoProjectNode.cs" />
     <Compile Include="Guids.cs" />

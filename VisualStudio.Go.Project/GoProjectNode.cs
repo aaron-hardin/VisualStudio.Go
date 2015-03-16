@@ -79,5 +79,10 @@ namespace AaronApp.VisualStudio_Go_Project
 			result[0] = typeof(GeneralPropertyPage).GUID;
 			return result;
 		}
+
+		protected override ConfigProvider CreateConfigProvider()
+		{
+			return new GoConfigProvider(this);
+		}
 	}
 }
