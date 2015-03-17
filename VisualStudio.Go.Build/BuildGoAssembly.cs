@@ -26,7 +26,11 @@ namespace VisualStudio.Go.Build
 			Process p = Process.Start(goExecutable, arguments);
 		    if(p != null)
 		    {
-			    p.WaitForExit(3*1000);
+			    bool exited = p.WaitForExit(3*1000);
+			    if(!exited)
+			    {
+				    return false;
+			    }
 		    }
 		    else
 		    {

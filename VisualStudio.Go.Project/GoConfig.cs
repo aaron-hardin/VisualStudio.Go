@@ -33,19 +33,9 @@ namespace AaronApp.VisualStudio_Go_Project
 			// TODO: For debugging, check the grfLaunch flags.
 			// The flags differ for "Launch" and "Launch with debugging".
 
-			// TODO: move this to another project that defines build process, this should just be running it
-			//// TODO: system variable?
-			//const string binPath = @"C:\Go\bin";
+			string assemblyName = project.GetOutputAssembly(ConfigName);
 
-			//string goExecutable = Path.Combine(binPath, "go.exe");
-
-			//// TODO: path?
-			//string assemblyName = project.GetAssemblyName(ConfigName);
-
-			//// TODO: allow main.go to be changed?
-			//string arguments = "build -o " + assemblyName + " main.go";
-
-			//Process.Start(goExecutable, arguments);
+			Process.Start(assemblyName);
 
 			return VSConstants.S_OK;
 		}
