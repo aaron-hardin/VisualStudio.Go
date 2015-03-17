@@ -1,0 +1,71 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <TargetExt>.exe</TargetExt>
+  </PropertyGroup>
+
+  <!-- Add properties required for WPF -->
+  <PropertyGroup>
+    <!--
+      Add this targets file to the MSBuild project list so the project will
+      be rebuilt when the targets file changes.
+    -->
+    <MSBuildAllProjects>$(MSBuildAllProjects);$(MSBuildExtensionsPath)\Go\1.0\Go.targets</MSBuildAllProjects>
+    <DefaultLanguageSourceExtension>.js</DefaultLanguageSourceExtension>
+    <Language>JavaScript</Language>
+  </PropertyGroup>
+
+  <!--Reference the assembly where our tasks are defined-->
+  <UsingTask TaskName="VisualStudio.Go.Build.BuildGoAssembly" AssemblyFile="VisualStudio.Go.Build.dll" />
+  <UsingTask TaskName="VisualStudio.Go.Build.RunGoAssembly" AssemblyFile="VisualStudio.Go.Build.dll" />
+  <!--<UsingTask TaskName="Microsoft.Samples.VisualStudio.IronPythonTasks.IronPythonCompilerTask" AssemblyFile="IronPythonTasks.dll" />-->
+  <!--<UsingTask TaskName="CreateCSharpManifestResourceName" AssemblyName="Microsoft.Build.Tasks, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a"/>-->
+
+  <!--Compile target (this is the target that calls the compiler task)-->
+  <Target Name="GoAssembly">
+    <Message Text="Building: @(IntermediateAssembly)" />
+    <!--
+      ReferencedAssemblies="@(ReferencePath)"
+      ResourceFiles="@(ManifestResourceWithNoCulture);@(ManifestNonResxWithNoCultureOnDisk);@(CompiledLicenseFile)"
+      MainFile="$(MainFile)"
+      TargetKind="$(OutputType)"
+      DebugSymbols="$(DebugSymbols)"
+      ProjectPath="$(MSBuildProjectDirectory)"
+      UseExperimentalCompiler="$(UseIPExperimentalCompiler)"
+      -->
+  </Target>
+
+
+  <!--This is an override of CoreCompile to have our IronPythonCompilerTarget be called at compile time-->
+  <Target
+      Name="CoreCompile"
+      Inputs="$(MSBuildAllProjects);
+              @(Compile);
+              @(ReferencePath);
+              @(_ResolvedProjectReferencePaths);
+              @(_Reference)"
+      Outputs="@(IntermediateAssembly)"
+      DependsOnTargets="$(CoreCompileDependsOn)"
+    >
+    <BuildGoAssembly
+      Name="$(Name)"
+      Guid="$(ProjectGuid)"
+      DefaultEnvironments="$(DefaultEnvironments)"
+      References="@(Reference);@(_ResolvedProjectReferencePaths)"
+      SourceFiles="@(Compile)"
+      OutputFile="@(IntermediateAssembly)"
+      />
+  </Target>
+
+  <Target Name="Run">
+    <RunGoAssembly OutputFile="@(IntermediateAssembly)" />
+  </Target>
+
+  <Import Project="$(MSBuildBinPath)\Microsoft.Common.targets" />
+
+  <Target Name="GetFrameworkPaths" />
+  <Target Name="CreateManifestResourceNames" />
+  <Target Name="ResolveAssemblyReferences" />
+  <Target Name="PrepareResources" />
+
+</Project>

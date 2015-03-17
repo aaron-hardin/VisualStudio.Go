@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VisualStudio.Go.Project", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VisualStudio.Go.Highlighting", "VisualStudio.Go.Highlighting\VisualStudio.Go.Highlighting.csproj", "{2AB37025-B2CD-49E2-8D51-DDC027BA20B3}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VisualStudio.Go.Build", "VisualStudio.Go.Build\VisualStudio.Go.Build.csproj", "{291E95BB-138C-422F-86EF-D1B939444E08}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{2AB37025-B2CD-49E2-8D51-DDC027BA20B3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2AB37025-B2CD-49E2-8D51-DDC027BA20B3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2AB37025-B2CD-49E2-8D51-DDC027BA20B3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{291E95BB-138C-422F-86EF-D1B939444E08}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{291E95BB-138C-422F-86EF-D1B939444E08}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{291E95BB-138C-422F-86EF-D1B939444E08}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{291E95BB-138C-422F-86EF-D1B939444E08}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

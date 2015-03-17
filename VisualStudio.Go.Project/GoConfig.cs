@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -32,10 +33,21 @@ namespace AaronApp.VisualStudio_Go_Project
 			// TODO: For debugging, check the grfLaunch flags.
 			// The flags differ for "Launch" and "Launch with debugging".
 
-			// TODO: customize launching
-			return base.DebugLaunch(grfLaunch);
+			// TODO: move this to another project that defines build process, this should just be running it
+			//// TODO: system variable?
+			//const string binPath = @"C:\Go\bin";
 
-			//return VSConstants.S_OK;
+			//string goExecutable = Path.Combine(binPath, "go.exe");
+
+			//// TODO: path?
+			//string assemblyName = project.GetAssemblyName(ConfigName);
+
+			//// TODO: allow main.go to be changed?
+			//string arguments = "build -o " + assemblyName + " main.go";
+
+			//Process.Start(goExecutable, arguments);
+
+			return VSConstants.S_OK;
 		}
 	}
 }
