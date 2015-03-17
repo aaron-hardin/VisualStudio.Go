@@ -31,6 +31,7 @@ namespace AaronApp.VisualStudio_Go_Project
 	[ProvideProjectFactory(typeof(GoProjectFactory), null,
 		"Go Project Files (*.goproj);*.goproj", "goproj", "goproj",
 		".\\NullPath", LanguageVsTemplate = "GoProject")]
+	[ProvideProjectItem(typeof(GoProjectFactory), "Code", ".\\NullPath", 100)]
     [Guid(GuidList.guidVisualStudio_Go_ProjectPkgString)]
 	[ProvideObject(typeof(GeneralPropertyPage))]
 	public sealed class GoProjectPackage : ProjectPackage

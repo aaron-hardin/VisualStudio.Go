@@ -154,6 +154,8 @@
   <ItemGroup>
     <EmbeddedResource Include="Resources\google.ico" />
     <EmbeddedResource Include="Resources\GoProjectNode.bmp" />
+    <ZipItem Include="Templates\Items\Package\file.go" />
+    <ZipItem Include="Templates\Items\CodeFile\file.go" />
     <ZipProject Include="Templates\Projects\GoProject\google.ico" />
     <ZipProject Include="Templates\Projects\GoProject\GoProject.vstemplate" />
     <None Include="source.extension.vsixmanifest">
@@ -166,6 +168,10 @@
     <None Include="Key.snk" />
   </ItemGroup>
   <ItemGroup>
+    <ZipItem Include="Templates\Items\Package\Package.vstemplate" />
+    <ZipItem Include="Templates\Items\Package\google.ico" />
+    <ZipItem Include="Templates\Items\CodeFile\google.ico" />
+    <ZipItem Include="Templates\Items\CodeFile\CodeFile.vstemplate" />
     <VSCTCompile Include="GoProject.vsct" />
     <Content Include="Resources\Package.ico" />
   </ItemGroup>
@@ -177,6 +183,7 @@
       <IncludeOutputGroupsInVSIXLocalOnly>DebugSymbolsProjectOutputGroup%3b</IncludeOutputGroupsInVSIXLocalOnly>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <UseCodebase>true</UseCodebase>
   </PropertyGroup>

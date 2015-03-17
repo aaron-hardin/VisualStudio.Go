@@ -1,0 +1,13 @@
+﻿<VSTemplate Version="3.0.0" Type="Item"
+    xmlns="http://schemas.microsoft.com/developer/vstemplate/2005">
+  <TemplateData>
+    <Name>Code File</Name>
+    <Description>A file for a go application.</Description>
+    <Icon>google.ico</Icon>
+    <ProjectType>GoProject</ProjectType>
+    <DefaultName>file.go</DefaultName>
+  </TemplateData>
+  <TemplateContent>
+    <ProjectItem SubType="Code" ReplaceParameters="true" OpenInEditor="true" TargetFileName="$fileinputname$.go">file.go</ProjectItem>
+  </TemplateContent>
+</VSTemplate>
