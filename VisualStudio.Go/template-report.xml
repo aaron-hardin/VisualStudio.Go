@@ -1,9 +1,0 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<TemplateReport>
-  <ItemTemplates />
-  <ProjectTemplates>
-    <ProjectTemplate Path="..\TestTemplate\_Definitions\_project.vstemplate.xml" Name="Your name here" Description="Project description here" ProjectType="CSharp" ProjectSubType="" />
-    <ProjectTemplate Path="..\VisualStudio.Go.Template\_Definitions\_project.vstemplate.xml" Name="Go Template" Description="Project description here" ProjectType="Go" ProjectSubType="" />
-  </ProjectTemplates>
-  <Snippets />
-</TemplateReport>
