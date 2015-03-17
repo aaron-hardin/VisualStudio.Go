@@ -10,6 +10,7 @@ Visual Studio.Go.Build places some files in the '$(MSBuildExtensionsPath)\Go\1.0
 ### Current features
   - Build application
   - Use a template to start a Go project
+  - Add files to project (item templates)
 
 ### Future features
   - Extended templates
@@ -17,6 +18,5 @@ Visual Studio.Go.Build places some files in the '$(MSBuildExtensionsPath)\Go\1.0
   - Syntax Highlighting (for now I reccomend [Visual Studio Go Support][vs go])
   - Debugging
   - Installer (deploying build tasks)
-  - Add files to project
 
 [vs go]: https://visualstudiogallery.msdn.microsoft.com/bd7675ba-1bf5-4395-8c5a-4fc19dfc0d76
